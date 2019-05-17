@@ -3,12 +3,11 @@
 <body>
 
 <audio controls>
-  <source src="SkyHigh.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
+  <source src="MyHeart.mp3" type="audio/mpeg">
 </audio>
 
 </body>
-</html>
+</html
 
 <!doctype html>
 <html lang="en">
@@ -23,7 +22,7 @@ Your browser does not support the audio element.
                 font-size: 30px;
       }
     </style>
-    <div>Daniel Hwang</div>
+    <div>Sunhyeon Hwang</div>
 
   </body>
 </html>
@@ -92,8 +91,61 @@ li a:hover {
 <body style="background-color:lightgray;">
   <h1>This is my program written with Python called "Jungle Escape"</h1>
   </h1>Interactive fiction coded in python. Goal: Escape the jungle with your companion</h1>
-<iframe height="400px" width="100%" src="https://repl.it/@hajngej5831/Daniel-Hwang?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<iframe height="400px" width="100%" src="https://repl.it/@SunhyeonHwang/Daniel-Hwang?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 </body>
 </html>
 <h1>This is a Tic Tac Toe game made with Canopy</h1>
 <iframe height="400px" width="100%" src="https://repl.it/@hajngej5831/ExtrovertedQuizzicalAmoeba?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<h1>Image Changing Project</h1>
+<img src="images/imageManipRaccoons.png" width="100%" alt="collage of raccoons">
+<textarea rows="20" cols="100">import matplotlib.pyplot as plt
+import os.path
+import numpy as np # “as” lets us use standard abbreviations
+from PIL import Image, ImageDraw, ImageFont
+   
+'''Read the image data'''
+# Get the directory of this python script
+directory = os.path.dirname(os.path.abspath(__file__)) 
+print(os.path.dirname(os.path.abspath(__file__)) )
+# Build an absolute filename from directory + filename
+filename = os.path.join(directory, 'raccoon.jpg')
+# Read the image data into an array
+raw = plt.imread(filename)
+img = raw.copy()
+imgPie = Image.open(os.path.join(directory, 'raccoon.jpg'))
+imgText = imgPie.copy()
+  
+'''Show the image data'''
+# Create figure with 1 subplot
+fig, ax = plt.subplots(2, 2)
+# Show the image data in a subplot
+# ax[0].set_xlim(70, 140)
+# ax[0].set_ylim(100, 80)
+for r in range(len(img)):
+    for c in range(len(img[0])):
+        if sum(img[r][c])&gt;300: 
+            img[r][c]=[218, 200, 127] 
+        else:
+            img[r][c] = [0,0,0]
+
+drawPie = ImageDraw.Draw(imgPie)
+drawPie.pieslice([430, 50, 1130, 750], -135, -115, fill=(255, 0, 0))
+drawPie.pieslice([430, 50, 1130, 750], -80, -60, fill=(255, 0, 0))
+
+drawText = ImageDraw.Draw(imgText)
+font = ImageFont.truetype("arial.ttf", 140)
+font1 = ImageFont.truetype("comic.ttf", 250)
+drawText.text((35, 45), "It's", font=font)
+drawText.text((1150, 30), "a", font=font)
+drawText.text((50, 450), "RACCOON", font=font1, fill=(255, 0, 255))
+
+
+ax[0][0].imshow(raw, interpolation='none')
+ax[0][1].imshow(img, interpolation='none')
+ax[1][0].imshow(imgPie, interpolation='none')
+ax[1][1].imshow(imgText, interpolation='none')
+
+# Show the figure on the screen
+fig.show()
+</textarea>
